@@ -1,0 +1,327 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cinzel", "Georgia", serif;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a0d1a 40%, #2d1b69 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(138, 43, 226, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(178, 34, 34, 0.1) 0%,
+      transparent 50%
+    );
+  z-index: -1;
+  animation: nebulosa 20s ease-in-out infinite alternate;
+}
+
+@keyframes nebulosa {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  background: linear-gradient(
+    145deg,
+    rgba(15, 15, 35, 0.95) 0%,
+    rgba(26, 13, 26, 0.98) 100%
+  );
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 25px;
+  padding: 50px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow:
+    0 25px 75px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 215, 0, 0.1);
+  text-align: center;
+  position: relative;
+  backdrop-filter: blur(15px);
+  animation: fadeInNoir 2s ease-out;
+}
+
+@keyframes fadeInNoir {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.heart-container {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+svg {
+  overflow: visible;
+  transform: scale(1.8);
+  filter: drop-shadow(0 0 30px rgba(178, 34, 34, 0.6));
+}
+
+svg path#line {
+  fill: none;
+  stroke: #b22;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: dashProfundo 5s linear infinite;
+}
+
+svg path#heart {
+  transform-origin: 50% 50%;
+  animation: pulsarIntenso 4.5s ease-in-out infinite;
+}
+
+@keyframes dashProfundo {
+  0% {
+    stroke-dashoffset: 1;
+  }
+  75% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulsarIntenso {
+  0%,
+  45% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+}
+
+h1 {
+  color: #ff3c00;
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 35px;
+  text-shadow:
+    0 0 20px rgba(255, 215, 0, 0.5),
+    2px 2px 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
+  animation: brilhoDourado 3s ease-in-out infinite;
+}
+
+@keyframes brilhoDourado {
+  0%,
+  100% {
+    text-shadow:
+      0 0 20px rgba(255, 215, 0, 0.5),
+      2px 2px 10px rgba(0, 0, 0, 0.8);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow:
+      0 0 40px rgba(255, 215, 0, 0.9),
+      0 0 60px rgba(255, 215, 0, 0.4);
+    transform: scale(1.03);
+  }
+}
+
+.poema {
+  font-size: 1.2em;
+  line-height: 1.9;
+  color: #e8d5b7;
+  margin: 40px 0;
+  padding: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 27, 105, 0.4) 0%,
+    rgba(26, 13, 26, 0.6) 100%
+  );
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  border-radius: 20px;
+  text-align: left;
+  white-space: pre-line;
+  position: relative;
+  animation: revelarVersos 3s ease-out;
+  box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.1);
+}
+
+@keyframes revelarVersos {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.poema::before {
+  content: "✦";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  font-size: 2em;
+  color: #ffd700;
+  opacity: 0.7;
+}
+
+.assinatura {
+  font-style: italic;
+  color: #b22;
+  font-size: 1.5em;
+  margin-top: 40px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 10px rgba(178, 34, 34, 0.5);
+  animation: assinaturaFade 4s ease-in-out infinite;
+}
+
+@keyframes assinaturaFade {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.flores {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, #8a2be2 0%, #4b0082 70%);
+  border-radius: 50% 0 50% 0;
+  animation: brilharProfundo 8s infinite ease-in-out;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+}
+
+.flores:nth-child(1) {
+  top: 8%;
+  left: 12%;
+  animation-delay: 0s;
+}
+.flores:nth-child(2) {
+  top: 25%;
+  right: 18%;
+  animation-delay: 2s;
+}
+.flores:nth-child(3) {
+  bottom: 20%;
+  left: 15%;
+  animation-delay: 4s;
+}
+.flores:nth-child(4) {
+  bottom: 12%;
+  right: 12%;
+  animation-delay: 1s;
+}
+
+@keyframes brilharProfundo {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+  }
+  50% {
+    transform: scale(1.4) rotate(180deg);
+    opacity: 1;
+    box-shadow: 0 0 30px rgba(138, 43, 226, 1);
+  }
+}
+
+.mensagem-final {
+  margin-top: 40px;
+  padding: 25px;
+  background: linear-gradient(135deg, #8a2be2, #b22);
+  color: #ffd700;
+  border-radius: 20px;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  animation: pulsarFinal 4s ease-in-out infinite;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+@keyframes pulsarFinal {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+  h1 {
+    font-size: 2.2em;
+  }
+  .poema {
+    font-size: 1.1em;
+    padding: 20px;
+  }
+  svg {
+    transform: scale(1.3);
+  }
+  .music-controls {
+    bottom: 15px;
+    right: 15px;
+  }
+  .music-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+}
